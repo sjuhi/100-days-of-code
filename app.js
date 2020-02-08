@@ -1,42 +1,29 @@
-const startButton = document.getElementById('start-btn')
-const questionContainerElement = document.getElementById('quetion container')
-const questionElement = document.getElementById('question')
-const answerButtonsElement = document.getElementById('answer-buttons')
-
-let shuffledQuestions, currentQuestionIdex
-
-startButton.addEventListener('click', startGame)
-function startGame(){
-    console.log('strated')
-    startButton.classList.add('hide')
-    shuffledQuestions = question.sort(()=> Math.random() - .5)
-    currentQuestionIdex = 0
-    questionContainerElement.classList.remove('hide')
-    setNextQuestion()
-}
-
-function setNextQuestion(){
-    showQuestion(shuffledQuestions[currentQuestionIdex])
-function showQuestion(question)
-questionElement.innerText = question.question
-question.answers.forEach(answer => {
-    const button = document.createElement('button')
-    button,innerText = answer.innerText
-    button.classList.add('btn')
-    if(answer.coorect){
-        button.dataset.correct =answerr.coorect
+function showTime(){
+    var date = new Date();
+    var h = date.getHours(); 
+    var m = date.getMinutes(); 
+    var s = date.getSeconds(); 
+    var session = "AM";
+    
+    if(h == 0){
+        h = 12;
     }
-    button.addEventListener('click', selectAnswer)
-    answerButtonsElement.appendChild(button)
-})
+    
+    if(h > 12){
+        h = h - 12;
+        session = "PM";
+    }
+    
+    h = (h < 10) ? "0" + h : h;
+    m = (m < 10) ? "0" + m : m;
+    s = (s < 10) ? "0" + s : s;
+    
+    var time = h + ":" + m + ":" + s + " " + session;
+    document.getElementById("DigitalCLOCK").innerText = time;
+    document.getElementById("DigitalCLOCK").textContent = time;
+    
+    setTimeout(showTime, 1000);
+    
 }
-function resetState(){
-    nextButton.classList.add('hide')
-}
-
-function selectAnswer(){
-
-}
-const question = {
-question = 'Presdient of India?'
-}
+ 
+showTime();
